@@ -7,7 +7,12 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://164.92.175.112:3000", // Allow requests only from this origin
+    // other options
+  })
+);
 app.use(express.json());
 
 //db connection using mongoose connect
