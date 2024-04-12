@@ -21,14 +21,14 @@ const generateSudoku = (req, res) => {
 //POST /api/sudoku/scores
 const saveScore = async (req, res) => {
   try {
-    const { username, score } = req.body;
+    const { username, dif, score } = req.body;
     if (!username || !score) {
       return res
         .status(400)
         .json({ message: "Please provide username and score." });
     }
     // Save the score to the database
-    const userScore = new Score({ username, score });
+    const userScore = new Score({ username, dif, score });
     await userScore.save();
     res.status(201).json({ message: "Score saved successfully." });
   } catch (error) {
